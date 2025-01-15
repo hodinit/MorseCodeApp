@@ -74,10 +74,11 @@ namespace MorseCodeApp2.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
+            [Required]
+            [Display(Name = "Name")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa inceapa cu majuscula")]
+            public string Name { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -115,9 +116,10 @@ namespace MorseCodeApp2.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var user = CreateUser();
-            await _userStore.SetUserNameAsync(user, Input.Email,CancellationToken.None);
+            await _userStore.SetUserNameAsync(user, Input.Name,CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email,CancellationToken.None);
             var result = await _userManager.CreateAsync(user,Input.Password);
+            User.Name = Input.Name;
             User.Email = Input.Email;
             _context.User.Add(User);
             await _context.SaveChangesAsync();
