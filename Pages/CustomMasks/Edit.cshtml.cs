@@ -36,7 +36,7 @@ namespace MorseCodeApp2.Pages.CustomMasks
                 return NotFound();
             }
             CustomMask = custommask;
-           ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "ID");
+            ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "Name");
             return Page();
         }
 

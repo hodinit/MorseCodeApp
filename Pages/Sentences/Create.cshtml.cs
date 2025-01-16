@@ -24,6 +24,9 @@ namespace MorseCodeApp2.Pages.Sentences
         ViewData["CustomMaskID"] = new SelectList(_context.CustomMask, "ID", "ID");
         ViewData["MorseDefaultConversionID"] = new SelectList(_context.MorseDefaultConversion, "ID", "ID");
         ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "Name");
+        ViewData["SentenceInput"] = new SelectList(_context.Sentence, "ID", "Input");
+        ViewData["SentenceOutput"] = new SelectList(_context.Sentence, "ID", "Output");
+
             return Page();
         }
 

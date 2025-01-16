@@ -21,7 +21,7 @@ namespace MorseCodeApp2.Pages.CustomMasks
 
         public IActionResult OnGet()
         {
-        ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "ID");
+        ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "Name");
             return Page();
         }
 
