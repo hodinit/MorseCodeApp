@@ -15,8 +15,6 @@
         public int? CustomMaskID { get; set; }
         public CustomMask? CustomMask { get; set; }
 
-        public int? DateID { get; set; }
-        public Date? Date { get; set; }
-
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

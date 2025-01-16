@@ -25,8 +25,7 @@ namespace MorseCodeApp2.Pages.MorseDefaultConversions
 
         public async Task OnGetAsync()
         {
-            MorseDefaultConversion = await _context.MorseDefaultConversion
-                .Include(m => m.User).ToListAsync();
+            MorseDefaultConversion = await _context.MorseDefaultConversion.ToListAsync();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace MorseCodeApp2.Pages.Sentences
         {
             Sentence = await _context.Sentence
                 .Include(s => s.CustomMask)
-                .Include(s => s.Date)
                 .Include(s => s.MorseDefaultConversion)
                 .Include(s => s.User).ToListAsync();
         }

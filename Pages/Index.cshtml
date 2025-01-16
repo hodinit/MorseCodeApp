@@ -1,10 +1,19 @@
 ﻿@page
-@model IndexModel
+@model MorseCodeApp2.Pages.Sentences.CreateModel
+
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Morse Code Converter App</h1>
+    <br />
+    <br />
+    <div class="col-md-5">
+		<form method="post">
+            <label asp-for="Sentence.Input" class="control-label"></label>
+            <select asp-for="Sentence.Input" class="form-control" asp-items="ViewBag.Sentence"></select>
+        </form>
+    </div>  
+   
 </div>

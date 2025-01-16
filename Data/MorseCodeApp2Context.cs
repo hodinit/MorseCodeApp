@@ -15,7 +15,6 @@ namespace MorseCodeApp2.Data
         }
 
         public DbSet<MorseCodeApp2.Models.CustomMask> CustomMask { get; set; } = default!;
-        public DbSet<MorseCodeApp2.Models.Date> Date { get; set; } = default!;
         public DbSet<MorseCodeApp2.Models.MorseDefaultConversion> MorseDefaultConversion { get; set; } = default!;
         public DbSet<MorseCodeApp2.Models.Sentence> Sentence { get; set; } = default!;
         public DbSet<MorseCodeApp2.Models.User> User { get; set; } = default!;

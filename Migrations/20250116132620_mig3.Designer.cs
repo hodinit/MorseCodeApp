@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MorseCodeApp2.Data;
 
@@ -11,9 +12,11 @@ using MorseCodeApp2.Data;
 namespace MorseCodeApp2.Migrations
 {
     [DbContext(typeof(MorseCodeApp2Context))]
-    partial class MorseCodeApp2ContextModelSnapshot : ModelSnapshot
+    [Migration("20250116132620_mig3")]
+    partial class mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,7 +88,12 @@ namespace MorseCodeApp2.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
+                    b.Property<int?>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("MorseDefaultConversion");
                 });
@@ -159,6 +167,15 @@ namespace MorseCodeApp2.Migrations
                 });
 
             modelBuilder.Entity("MorseCodeApp2.Models.CustomMask", b =>
+                {
+                    b.HasOne("MorseCodeApp2.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MorseCodeApp2.Models.MorseDefaultConversion", b =>
                 {
                     b.HasOne("MorseCodeApp2.Models.User", "User")
                         .WithMany()
