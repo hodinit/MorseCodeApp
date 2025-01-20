@@ -29,7 +29,9 @@ namespace MorseCodeApp2.Pages.CustomMasks
                 return NotFound();
             }
 
-            var custommask = await _context.CustomMask.FirstOrDefaultAsync(m => m.ID == id);
+            var custommask = await _context.CustomMask
+                .Include(s => s.User)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (custommask == null)
             {
                 return NotFound();

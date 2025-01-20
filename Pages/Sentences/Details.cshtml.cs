@@ -28,7 +28,9 @@ namespace MorseCodeApp2.Pages.Sentences
                 return NotFound();
             }
 
-            var sentence = await _context.Sentence.FirstOrDefaultAsync(m => m.ID == id);
+            var sentence = await _context.Sentence
+                .Include(s => s.User)
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (sentence == null)
             {
                 return NotFound();
