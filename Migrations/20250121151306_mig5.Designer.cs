@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MorseCodeApp2.Data;
 
@@ -11,9 +12,11 @@ using MorseCodeApp2.Data;
 namespace MorseCodeApp2.Migrations
 {
     [DbContext(typeof(MorseCodeApp2Context))]
-    partial class MorseCodeApp2ContextModelSnapshot : ModelSnapshot
+    [Migration("20250121151306_mig5")]
+    partial class mig5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
