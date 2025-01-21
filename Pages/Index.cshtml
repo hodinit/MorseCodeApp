@@ -10,17 +10,16 @@
     <br />
     <br />
     <div class="col-md-5">
-		<form method="post">
             <label asp-for="Sentence.Input" class="control-label"></label>
             <select asp-for="Sentence.Input" class="form-control" asp-items="ViewBag.SentenceInput"></select>
 			<br />
-			<input type="submit" value="Convert" class="btn btn-primary" />
+			<button class="btn btn-primary" >Convert</button>
             <br />
 			<br />
             <label asp-for="Sentence.Output" class="control-label"></label>
-            <select asp-for="Sentence.Output" class="form-control" asp-items="ViewBag.SentenceOutput"></select>
+            <input asp-for="Sentence.Output" class="form-control" readonly/>
             <br />
-        </form>
+        
     </div>  
    
 </div>

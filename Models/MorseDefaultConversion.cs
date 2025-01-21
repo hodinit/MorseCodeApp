@@ -11,7 +11,7 @@ namespace MorseCodeApp2.Models
         public string Character { get; set; }
 
         [RegularExpression(@"^[01]+$", ErrorMessage = "Acest camp trebuie sa fie doar 1 sau 0 sau combinatii intre ele")]
-        [StringLength(5, MinimumLength = 1, ErrorMessage = "Acest camp trebuie sa aiba de la 1 pana la 5 valori")]
+        [StringLength(5, MinimumLength = 1)]
         public string MorseEquivalent { get; set; }
         
     }
