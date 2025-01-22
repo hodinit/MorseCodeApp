@@ -12,5 +12,8 @@ namespace MorseCodeApp2.Models
         public string? Password { get; set; }
         public bool? Admin { get; set; }
 
+        public List<Sentence> Sentences { get; set; }
+        public List<CustomMask> CustomMasks { get; set; }
+
     }
 }
