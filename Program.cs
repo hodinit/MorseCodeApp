@@ -1,8 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MorseCodeApp2.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Users");
+    options.Conventions.AuthorizeFolder("/MorseDefaultConversions");
+});
+builder.Services.AddDbContext<MorseCodeApp2Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MorseCodeApp2Context") ?? throw new InvalidOperationException("Connection string 'MorseCodeApp2Context' not found.")));
 
+builder.Services.AddDbContext<MorseCodeApp2IdentityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MorseCodeApp2Context") ?? throw new InvalidOperationException("Connection string 'MorseCodeApp2Context' not found.")));
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<MorseCodeApp2IdentityContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
